@@ -1,5 +1,5 @@
 ---
-title: "Security Alert: High/Critical Vulnerabilities Found"
+title: "Security Alert ({{ env.GITHUB_REF_NAME }}): High/Critical Vulnerabilities Found"
 assignees: [ "" ]
 labels: [ "security", "bug" ]
 ---
