@@ -21,7 +21,7 @@ High or Critical vulnerabilities were detected during the automated filesystem s
 
 ### 📋 Action Required
 Please review the logs in the GitHub Actions tab to see the full table output:
-[View Workflow Run](${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }})
+[View Workflow Run]({{ env.GITHUB_SERVER_URL }}/{{ env.GITHUB_REPOSITORY }}/actions/runs/{{ env.GITHUB_RUN_ID }})
 
 **Summary of Scan Configuration:**
 - **Scanners:** `vuln`
