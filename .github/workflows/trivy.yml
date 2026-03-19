@@ -25,21 +25,33 @@ jobs:
           scan-type: "fs"
           scan-ref: "."
           format: "table"
+          output: "trivy-report.txt"
           exit-code: "1"
           ignore-unfixed: true
           scanners: "vuln"
           severity: "HIGH,CRITICAL"
+      
+      - name: Prepare Report Data
+        if: steps.trivy_scan.outcome == 'failure'
+        run: |
+          # 1. This reads the file and 'assigns' it to REPORT_DATA
+          echo "REPORT_DATA<<EOF" >> $GITHUB_ENV
+          cat trivy-report.txt >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Issue if Vulnerabilities Found
         if: steps.trivy_scan.outcome == 'failure'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          REPORT_DATA: ${{ env.REPORT_DATA }}
         with:
           filename: .github/ISSUE_TEMPLATE/vuln_report.md
-          
+          update_existing: true
+
       - name: Final Status Check
         if: steps.trivy_scan.outcome == 'failure'
         run: |
