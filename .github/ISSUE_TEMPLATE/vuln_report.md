@@ -1,6 +1,6 @@
 ---
-title: "Security Alert ({{ env.GITHUB_REF_NAME }}): High/Critical Vulnerabilities Found"
-assignees: [ "" ]
+name: "Security Alert ({{ env.GITHUB_REF_NAME }}): High/Critical Vulnerabilities Found"
+about: "This issue was automatically generated because high or critical vulnerabilities were detected during the container/repository scan of the '{{ env.GITHUB_REF_NAME }}' branch. Please review the attached scan results and prioritize patching the affected dependencies."
 labels: [ "security", "bug" ]
 ---
 
