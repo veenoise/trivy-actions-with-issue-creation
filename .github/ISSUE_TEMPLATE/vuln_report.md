@@ -1,6 +1,7 @@
 ---
 title: "Security Alert ({{ env.GITHUB_REF_NAME }}): High/Critical Vulnerabilities Found"
-assignees: [ "" ]
+name: "Security Alert ({{ env.GITHUB_REF_NAME }}): High/Critical Vulnerabilities Found"
+about: "High or Critical vulnerabilities found in branch {{ env.GITHUB_REF_NAME }}. Review the scan report and patch affected dependencies to maintain security compliance."
 labels: [ "security", "bug" ]
 ---
 
